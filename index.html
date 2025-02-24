@@ -17,6 +17,7 @@
             align-items: center;
             height: 100vh;
             background: url('https://images4.alphacoders.com/136/1369866.png') no-repeat center center/cover;
+            padding: 20px;
         }
         .card {
             width: 100%;
@@ -29,6 +30,7 @@
             backdrop-filter: blur(10px);
         }
         .avatar {
+            position: relative;
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -41,6 +43,15 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+        }
+        .overlay-image {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
         }
         .name {
             font-size: 22px;
@@ -56,8 +67,9 @@
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         .social-icons a {
             width: 40px;
@@ -78,11 +90,12 @@
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
             margin-bottom: 15px;
         }
         .buttons a {
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 25px;
             background: linear-gradient(145deg, #ff7eb3, #ff758c);
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.6);
@@ -92,13 +105,11 @@
             transition: all 0.3s ease;
             display: inline-block;
         }
-
         .buttons a:hover {
             background: linear-gradient(145deg, #ff758c, #ff7eb3);
             box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2), inset -5px -5px 10px rgba(255, 255, 255, 0.6);
             transform: translateY(-2px);
         }
-
         .stats {
             display: flex;
             justify-content: space-around;
@@ -111,6 +122,7 @@
     <div class="card">
         <div class="avatar">
             <img src="https://i.imgur.com/oAynslU.jpeg" alt="Avatar">
+            <img src="https://i.imgur.com/MPmMS0j.jpeg" class="overlay-image" alt="Overlay">
         </div>
         <div class="name">Dươngg Phú Quốc</div>
         <div class="job">Designer & Developer</div>
