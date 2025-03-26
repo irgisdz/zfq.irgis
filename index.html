@@ -117,10 +117,58 @@
             font-size: 14px;
             color: #fff;
         }
+        .hidden { display: none; }
+        body {
+            background: url('https://images4.alphacoders.com/136/1369866.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            color: #ff4081;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .key-display {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4081;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #ff4081;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .copy-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .copy-button:hover {
+            background: #ff79b0;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
+    <div id="profile" class="card">
         <div class="avatar">
             <img src="https://i.imgur.com/wbFN3QF.jpeg" alt="Avatar">
         </div>
@@ -142,5 +190,34 @@
             <div>🔁 12.8k</div>
         </div>
     </div>
+
+    <div id="keyPage" class="hidden container">
+        <h1>Key của Bạn</h1>
+        <p class="key-display" id="keyDisplay">Đang tải...</p>
+        <p><button class="copy-button" onclick="copyKey()">Copy Key</button></p>
+    </div>
+
+    <script>
+        function getKeyFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('key');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const key = getKeyFromURL();
+            if (key) {
+                document.getElementById("profile").classList.add("hidden");
+                document.getElementById("keyPage").classList.remove("hidden");
+                document.getElementById("keyDisplay").textContent = key;
+            }
+        });
+
+        function copyKey() {
+            const keyText = document.getElementById("keyDisplay").textContent;
+            navigator.clipboard.writeText(keyText).then(() => {
+                alert("Key đã được sao chép!");
+            });
+        }
+    </script>
 </body>
 </html>
